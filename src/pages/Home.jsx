@@ -1,5 +1,7 @@
 import './Home.css'
 import Atom from '../components/Atom'
+
+const basePath = import.meta.env.BASE_URL;
 const Home = () => {
     return (
         <div className="home">
