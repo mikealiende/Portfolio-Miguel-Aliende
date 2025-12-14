@@ -1,0 +1,214 @@
+/* src/pages/Home.css */
+.home {
+    min-height: 100vh;
+    /* Ocupa toda la pantalla */
+    display: flex;
+    align-items: center;
+    padding-top: var(--nav-height);
+    overflow: hidden;
+    /* Evita scroll horizontal si la animación se sale */
+}
+
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    /* Espacio entre texto y foto */
+}
+
+/* Texto */
+.home-text {
+    flex: 1;
+    max-width: 600px;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.text-gradient {
+    background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2.5rem;
+}
+
+.cta-group {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Imagen y Efectos */
+.home-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.home-image img {
+    width: 100%;
+    max-width: 400px;
+    /* Ajusta esto según el tamaño de tu foto */
+    border-radius: 20px;
+    /* Bordes redondeados */
+    position: relative;
+    z-index: 2;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    opacity: 1.0;
+    mix-blend-mode: lighten;
+    filter: contrast(1.2) brightness(1.1);
+    /* Ajuste opcional para que resalte más */
+}
+
+/* Efecto de Resplandor (Glow) detrás de la foto */
+.image-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+    opacity: 0.5;
+    filter: blur(60px);
+    z-index: 1;
+}
+
+/* Móvil: Poner uno debajo de otro */
+@media (max-width: 768px) {
+    .home-container {
+        flex-direction: column;
+        /* Columna normal */
+        text-align: center;
+        padding-bottom: 4rem;
+    }
+
+    /* TRUCO: Hacemos que el div .home-text sea invisible para el flexbox */
+    .home-text {
+        display: contents;
+    }
+
+    /* Ahora ordenamos los elementos uno a uno */
+
+    /* 1. Título "Hola, Soy..." */
+    .hero-title {
+        order: 1;
+        margin-bottom: 2rem;
+    }
+
+    /* 2. La Foto */
+    .home-image {
+        order: 2;
+        margin-bottom: 2rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .home-image img {
+        max-width: 250px;
+    }
+
+    /* 3. Subtítulo "Ingeniería..." */
+    .hero-subtitle {
+        order: 3;
+        margin-bottom: 2rem;
+    }
+
+    /* 4. Botones */
+    .cta-group {
+        order: 4;
+        justify-content: center;
+    }
+
+    /* Ocultar glow */
+    .image-glow {
+        display: none;
+    }
+}
+
+/* Scroll Down Indicator */
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.scroll-down:hover {
+    opacity: 1;
+}
+
+.mouse {
+    width: 30px;
+    height: 50px;
+    border: 2px solid var(--accent-color);
+    border-radius: 20px;
+    position: relative;
+}
+
+.wheel {
+    width: 4px;
+    height: 8px;
+    background: #fff;
+    border-radius: 2px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll 1.5s infinite;
+}
+
+.arrow {
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(45deg);
+    animation: arrow 1.5s infinite;
+    animation-delay: 0.2s;
+}
+
+@keyframes scroll {
+    0% {
+        top: 10px;
+        opacity: 1;
+    }
+
+    100% {
+        top: 30px;
+        opacity: 0;
+    }
+}
+
+@keyframes arrow {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-5px, -5px);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+}
