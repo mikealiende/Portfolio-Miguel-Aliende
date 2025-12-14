@@ -23,7 +23,7 @@ const Home = () => {
                 {/* Columna Derecha: Imagen */}
                 <div className="home-image">
                     <div className="image-glow"></div>
-                    <img src="/profile.png" alt="Miguel Aliende" />
+                    <img src="${basePath}/profile.png" alt="Miguel Aliende" />
                 </div>
             </div>
             {/* Indicador */}
