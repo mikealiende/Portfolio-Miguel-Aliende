@@ -5,6 +5,7 @@ import './Projects.css'
 import Reveal from '../components/Reveal'
 
 const basePath = import.meta.env.BASE_URL;
+
 const Projects = () => {
     const [selectedProject, setSelectedProject] = useState(null)
 
@@ -60,7 +61,8 @@ const Projects = () => {
             category: "Computación cuántica",
             description: "Modificación en la PoW de Bitcoin para necesariamnete se tenga que resolver con recursos cuánticos.",
             technologies: ["Python", "Pennylane"],
-            images: ["${basePath}projects/qbitcoin.png", "${basePath}projects/qbitcoin.mp4"],
+            // CORRECCIÓN AQUÍ: Comillas invertidas ` ` y quitada la barra inicial extra
+            images: [`${basePath}projects/qbitcoin.png`, `${basePath}projects/qbitcoin.mp4`],
             extendedDescription: "La idea es sustituir el puzle clásico basando en hash por un puzle cuántico basado en Max-Cut. \n\n La resolución de la prueba de se hace con el algortimo QAOA.",
             github: "https://github.com/mikealiende/Quantum-Blockchain",
             link: "#"
@@ -70,7 +72,8 @@ const Projects = () => {
             category: "Computación cuántica",
             description: "Este es mi cerebro digitial de Obsidian sobre física cuántica y computación cuántica.",
             technologies: ["Obsidian", "Markdown"],
-            images: ["${basePath}/projects/Obsidian.png"],
+            // CORRECCIÓN AQUÍ: Comillas invertidas ` `
+            images: [`${basePath}projects/Obsidian.png`],
             link: "https://obsidian-quartz.vercel.app"
         }
     ]
